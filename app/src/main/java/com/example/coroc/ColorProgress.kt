@@ -5,18 +5,17 @@ import android.os.Bundle
 import android.text.Editable
 import android.text.TextUtils
 import android.text.TextWatcher
-import android.util.Log.d
 import android.view.Window
 import android.view.WindowManager
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.image_progress.*
 import kotlinx.coroutines.*
 
 class ColorProgress : AppCompatActivity() {
 
-    var isStopped: Boolean = false
+    private var progressStopped: Boolean = false
+    private var onAnimation: Boolean = false
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)//Remove title bar
         this.requestWindowFeature(Window.FEATURE_NO_TITLE)
@@ -31,7 +30,7 @@ class ColorProgress : AppCompatActivity() {
         val height = size.y
 //        var rWidth: Float = width.toFloat()
         var rHeight: Float = height.toFloat()
-        var counter = textView3.text.toString().toFloat() * 10 //per 100 milliseconds -> second * 1000 / 100
+        var counter = 600f //per 100 milliseconds -> second * 1000 / 100
 //        val rwUnit = width / counter
         var rhUnit = height / counter
         background_view.layoutParams.width = width
@@ -51,14 +50,18 @@ class ColorProgress : AppCompatActivity() {
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
         })
 
-        textView3.text = isStopped.toString()
+        textView3.text = progressStopped.toString()
         foregound_view.setOnClickListener{
-            if(isStopped) return@setOnClickListener
+            if(onAnimation) {
+                return@setOnClickListener
+            }
+            onAnimation = true
+            progressStopped = false
             CoroutineScope(Dispatchers.Main).launch {
                 Toast.makeText(applicationContext, "Clicked", Toast.LENGTH_SHORT).show()
                 while ( rHeight > 0) {
                     delay(100)
-                    if (isStopped) {
+                    if (progressStopped) {
                         break
                     }
 //                    rWidth -= rwUnit
@@ -67,8 +70,9 @@ class ColorProgress : AppCompatActivity() {
 //                    imageView2.layoutParams.width = rWidth.toInt()
                     foregound_view.layoutParams.height = rHeight.toInt()
                 }
-                isStopped = true
-                textView3.text = isStopped.toString()
+                progressStopped = true
+                onAnimation = false
+                textView3.text = progressStopped.toString()
                 foregound_view.layoutParams.height = 0
                 Toast.makeText(applicationContext, "After while on scope", Toast.LENGTH_SHORT).show()
             }

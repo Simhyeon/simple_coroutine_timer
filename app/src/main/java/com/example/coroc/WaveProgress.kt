@@ -2,6 +2,7 @@ package com.example.coroc
 
 import android.graphics.drawable.Drawable
 import android.os.Bundle
+import android.util.Log
 import android.view.Window
 import android.view.WindowManager
 import android.widget.SeekBar
@@ -29,45 +30,52 @@ class WaveProgress : AppCompatActivity() {
         seekBar.setOnSeekBarChangeListener( object : SeekBar.OnSeekBarChangeListener {
             override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
                 waveDrawable.setWaveAmplitude(progress)
-                TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+                Log.d("WaveAmplitude", "$progress")
             }
 
-            override fun onStartTrackingTouch(seekBar: SeekBar?) {
-                TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-            }
+            override fun onStartTrackingTouch(seekBar: SeekBar?) {}
 
             override fun onStopTrackingTouch(seekBar: SeekBar?) {
-                TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+
             }
         })
 
         seekBar2.setOnSeekBarChangeListener( object : SeekBar.OnSeekBarChangeListener {
             override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
                 waveDrawable.setWaveLength(progress)
-                TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
             }
 
-            override fun onStartTrackingTouch(seekBar: SeekBar?) {
-                TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-            }
+            override fun onStartTrackingTouch(seekBar: SeekBar?) {}
 
-            override fun onStopTrackingTouch(seekBar: SeekBar?) {
-                TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-            }
+            override fun onStopTrackingTouch(seekBar: SeekBar?) {}
         })
 
         seekBar3.setOnSeekBarChangeListener( object : SeekBar.OnSeekBarChangeListener {
             override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
                 waveDrawable.setWaveSpeed(progress)
-                TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+                Log.d("WaveSpeed", "$progress")
             }
 
             override fun onStartTrackingTouch(seekBar: SeekBar?) {
-                TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+//                TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
             }
 
             override fun onStopTrackingTouch(seekBar: SeekBar?) {
-                TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+//                TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+            }
+        })
+
+        seekBar4.setOnSeekBarChangeListener( object : SeekBar.OnSeekBarChangeListener {
+            override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
+                waveDrawable.setLevel(progress * 100)
+            }
+
+            override fun onStartTrackingTouch(seekBar: SeekBar?) {
+//                TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+            }
+
+            override fun onStopTrackingTouch(seekBar: SeekBar?) {
+//                TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
             }
         })
     }
