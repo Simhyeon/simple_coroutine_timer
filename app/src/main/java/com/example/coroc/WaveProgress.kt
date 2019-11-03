@@ -1,15 +1,23 @@
 package com.example.coroc
 
+import android.graphics.ColorMatrixColorFilter
 import android.os.Bundle
 import android.view.Window
 import android.view.WindowManager
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import kotlinx.android.synthetic.main.image_progress.*
 import kotlinx.android.synthetic.main.wave_progress.*
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 
 class WaveProgress : AppCompatActivity() {
 
-
+    var progressStopped = false
+    var onAnimation = false
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         this.requestWindowFeature(Window.FEATURE_NO_TITLE)
@@ -17,8 +25,19 @@ class WaveProgress : AppCompatActivity() {
 
         setContentView(R.layout.wave_progress)
 
-        val waveDrawable = WaveDrawable(this, R.drawable.blur)
+        // Currently just pure white
+        val bgFilter = ColorMatrixColorFilter(
+            floatArrayOf(
+                1f,     0f,     0f,     0f, 0f,
+                0f,     1f,     0f,     0f, 0f,
+                0f,     0f,     1f,     0f, 0f,
+                0f,     0f,     0f,     1f, 0f
+            ))
+
+        val waveDrawable = CorocWaveDrawable(this, R.drawable.blur, bgFilter)
         wave_foreground.setImageDrawable(waveDrawable)
+        waveDrawable.setOptions(43, 4,24)
+        waveDrawable.level = 0 // Litterly nothing to show
 
         val deviceWidth = CorocUtil.getDevicePoint(windowManager).first
         val deviceHeight = CorocUtil.getDevicePoint(windowManager).second
@@ -29,6 +48,28 @@ class WaveProgress : AppCompatActivity() {
         wave_background.layoutParams.height = deviceHeight
         wave_foreground.layoutParams.width = deviceWidth
         wave_foreground.layoutParams.height = deviceHeight
+
+        wave_foreground.setOnClickListener {
+            if(onAnimation) {
+                return@setOnClickListener
+            }
+            onAnimation = true
+            progressStopped = false
+            CoroutineScope(Dispatchers.Main).launch {
+                Toast.makeText(applicationContext, "Clicked", Toast.LENGTH_SHORT).show()
+                while ( rHeight > 0) {
+                    delay(100)
+                    if (progressStopped) {
+                        break
+                    }
+                    rHeight -= rhUnit
+                    foregound_view.layoutParams.height = rHeight.toInt()
+                }
+                progressStopped = true
+                onAnimation = false
+                foregound_view.layoutParams.height = 0
+            }
+        }
 //        seekBar.setOnSeekBarChangeListener( object : SeekBar.OnSeekBarChangeListener {
 //            override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
 //                waveDrawable.setWaveAmplitude(progress)

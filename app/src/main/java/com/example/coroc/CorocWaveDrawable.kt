@@ -11,6 +11,12 @@ class CorocWaveDrawable: WaveDrawable {
     constructor(context: Context, imgRes: Int) : super(context, imgRes) {}
     constructor(drawable: Drawable) : super(drawable) {}
     constructor(context: Context, imgRes: Int, colorFilter: ColorFilter) : super(context, imgRes) {
-        setBgFilter(colorFilter)
+        bgFilter = colorFilter
+    }
+
+    fun setOptions(amplitude: Int, waveLength: Int, waveSpeed: Int) {
+        super.setWaveAmplitude(amplitude)
+        super.setWaveLength(waveLength)
+        super.setWaveSpeed(waveSpeed)
     }
 }

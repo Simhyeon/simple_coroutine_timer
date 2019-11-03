@@ -49,7 +49,7 @@ public class WaveDrawable extends Drawable implements Animatable, ValueAnimator.
     private boolean mIndeterminate = false;
 
     private static final PorterDuffXfermode sXfermode = new PorterDuffXfermode(PorterDuff.Mode.DST_IN);
-    private static ColorFilter bgFilter = new ColorMatrixColorFilter(new float[]{
+    protected static ColorFilter bgFilter = new ColorMatrixColorFilter(new float[]{
             0.264F, 0.472F, 0.088F, 0, 0,
             0.264F, 0.472F, 0.088F, 0, 0,
             0.264F, 0.472F, 0.088F, 0, 0,
