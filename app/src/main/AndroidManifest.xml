@@ -22,6 +22,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".ColorProgress"
+            android:label="Coroc"
+            android:theme="@style/AppTheme.NoActionBar">
+        </activity>
+        <activity android:name=".WaveProgress"
+            android:label="Coroc"
+            android:theme="@style/AppTheme.NoActionBar">
+        </activity>
     </application>
 
 </manifest>
