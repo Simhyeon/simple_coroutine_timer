@@ -1,6 +1,5 @@
 package com.example.coroc
 
-import android.graphics.Point
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextUtils
@@ -23,27 +22,24 @@ class ColorProgress : AppCompatActivity() {
 
         setContentView(R.layout.image_progress)
 
-        val display = windowManager.defaultDisplay
-        val size = Point()
-        display.getSize(size)
-        val width = size.x
-        val height = size.y
+        val deviceWidth = CorocUtil.getDevicePoint(windowManager).first
+        val deviceHeight = CorocUtil.getDevicePoint(windowManager).second
 //        var rWidth: Float = width.toFloat()
-        var rHeight: Float = height.toFloat()
+        var rHeight: Float = deviceHeight.toFloat()
         var counter = 600f //per 100 milliseconds -> second * 1000 / 100
 //        val rwUnit = width / counter
-        var rhUnit = height / counter
-        background_view.layoutParams.width = width
-        background_view.layoutParams.height = height
-        foregound_view.layoutParams.width = width
-        foregound_view.layoutParams.height = height
+        var rhUnit = deviceHeight / counter
+        background_view.layoutParams.width = deviceWidth
+        background_view.layoutParams.height = deviceHeight
+        foregound_view.layoutParams.width = deviceWidth
+        foregound_view.layoutParams.height = deviceHeight
 //        Toast.makeText(applicationContext, "${imageView2.layoutParams.width} ${imageView2.layoutParams.height}", Toast.LENGTH_LONG).show()
 
         editText.addTextChangedListener(object: TextWatcher {
             override fun afterTextChanged(s: Editable?) {
                 if (!TextUtils.isEmpty(editText.text)){
                     counter = editText.text.toString().toFloat() * 10f
-                    rhUnit = height / counter
+                    rhUnit = deviceHeight / counter
                 }
             }
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
