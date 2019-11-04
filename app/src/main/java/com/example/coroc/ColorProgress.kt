@@ -1,15 +1,23 @@
 package com.example.coroc
 
+import android.R.attr.*
+import android.graphics.drawable.BitmapDrawable
+import android.graphics.drawable.ClipDrawable
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextUtils
 import android.text.TextWatcher
+import android.util.Log
 import android.view.Window
 import android.view.WindowManager
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.image_progress.*
-import kotlinx.coroutines.*
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
+
 
 class ColorProgress : AppCompatActivity() {
 
@@ -22,22 +30,24 @@ class ColorProgress : AppCompatActivity() {
 
         setContentView(R.layout.image_progress)
 
-        val deviceWidth = CorocUtil.getDevicePoint(windowManager).first
-        val deviceHeight = CorocUtil.getDevicePoint(windowManager).second
-        var rHeight: Float = deviceHeight.toFloat()
-        var counter = 600f //per 100 milliseconds -> second * 1000 / 100
-        var rhUnit = deviceHeight / counter
-        background_view.layoutParams.width = deviceWidth
-        background_view.layoutParams.height = deviceHeight
-        foregound_view.layoutParams.width = deviceWidth
-        foregound_view.layoutParams.height = deviceHeight
-//        Toast.makeText(applicationContext, "${imageView2.layoutParams.width} ${imageView2.layoutParams.height}", Toast.LENGTH_LONG).show()
+        foreground_view.setImageDrawable(
+            ClipDrawable(
+                getDrawable(R.drawable.blur), 50, 2
+            )
+        )
+        val clipDrawable = foreground_view.drawable
+        clipDrawable.level = 10000
 
+
+        var heightLevel = 10000f // Initial value is 10000
+        var delayMilliSeconds = 33 // Delay for while loop
+        var totalSeconds = 60 // Initial value is 60
+        var levelVariation = CorocUtil.getLevelVariation(totalSeconds, delayMilliSeconds)
         editText.addTextChangedListener(object: TextWatcher {
             override fun afterTextChanged(s: Editable?) {
                 if (!TextUtils.isEmpty(editText.text)){
-                    counter = editText.text.toString().toFloat() * 10f
-                    rhUnit = deviceHeight / counter
+                    totalSeconds = editText.text.toString().toInt()
+                    levelVariation = CorocUtil.getLevelVariation(totalSeconds, delayMilliSeconds)
                 }
             }
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
@@ -45,7 +55,7 @@ class ColorProgress : AppCompatActivity() {
         })
 
         textView3.text = onAnimation.toString()
-        foregound_view.setOnClickListener{
+        foreground_view.setOnClickListener{
             if(onAnimation && !onStopProgress) {
                 onAnimation = false
                 onStopProgress = true
@@ -54,23 +64,27 @@ class ColorProgress : AppCompatActivity() {
                 return@setOnClickListener
             }
             onAnimation = true
+            textView3.text = onAnimation.toString()
             CoroutineScope(Dispatchers.Main).launch {
-                Toast.makeText(applicationContext, "Clicked", Toast.LENGTH_SHORT).show()
-                while ( rHeight > 0 && onAnimation) {
-                    delay(100)
+                Toast.makeText(applicationContext, "Clicked ${clipDrawable.level}", Toast.LENGTH_SHORT).show()
+                while ( (heightLevel in 0f..10000f) && onAnimation) {
+                    Log.d("Progress", "${clipDrawable.level}")
+                    delay(delayMilliSeconds.toLong())
                     if (!onAnimation) {
                         break
                     } // Or you can put delay to last part of this while delay if you want to remove redundant
                       // if break phrases however that would make time progression little bit awkward
-                    rHeight -= rhUnit
-                    textView2.text = rHeight.toString()
+                    heightLevel -= levelVariation
+                    textView2.text = heightLevel.toString()
 //                    imageView2.layoutParams.width = rWidth.toInt()
-                    foregound_view.layoutParams.height = rHeight.toInt()
+                    clipDrawable.level = heightLevel.toInt()
                 }
                 onAnimation = false
                 onStopProgress = false
                 textView3.text = onAnimation.toString()
-                foregound_view.layoutParams.height = 0
+                if (heightLevel <= 0f ) {
+                    clipDrawable.level = 0
+                }
             }
         }
     }
