@@ -32,7 +32,7 @@ class ColorProgress : AppCompatActivity() {
 
         foreground_view.setImageDrawable(
             ClipDrawable(
-                getDrawable(R.drawable.blur), 50, 2
+                getDrawable(R.color.white), 50, 2
             )
         )
         val clipDrawable = foreground_view.drawable
