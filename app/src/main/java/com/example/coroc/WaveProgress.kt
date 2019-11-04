@@ -16,8 +16,8 @@ import kotlinx.coroutines.launch
 
 class WaveProgress : AppCompatActivity() {
 
-    var progressStopped = false
-    var onAnimation = false
+    private var onAnimation = false
+    private var onStopProgress = false
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         this.requestWindowFeature(Window.FEATURE_NO_TITLE)
@@ -44,29 +44,32 @@ class WaveProgress : AppCompatActivity() {
         var rHeight: Float = deviceHeight.toFloat()
         var counter = 600f //per 100 milliseconds -> second * 1000 / 100
         var rhUnit = deviceHeight / counter
+
         wave_background.layoutParams.width = deviceWidth
         wave_background.layoutParams.height = deviceHeight
         wave_foreground.layoutParams.width = deviceWidth
         wave_foreground.layoutParams.height = deviceHeight
 
         wave_foreground.setOnClickListener {
-            if(onAnimation) {
+            if(onAnimation && !onStopProgress) {
+                onAnimation = false
+                onStopProgress = true
+                return@setOnClickListener
+            } else if (onStopProgress) {
                 return@setOnClickListener
             }
             onAnimation = true
-            progressStopped = false
             CoroutineScope(Dispatchers.Main).launch {
                 Toast.makeText(applicationContext, "Clicked", Toast.LENGTH_SHORT).show()
-                while ( rHeight > 0) {
+                while ( rHeight > 0 && onAnimation) {
                     delay(100)
-                    if (progressStopped) {
+                    if (!onAnimation) {
                         break
                     }
-                    rHeight -= rhUnit
                     foregound_view.layoutParams.height = rHeight.toInt()
                 }
-                progressStopped = true
                 onAnimation = false
+                onStopProgress = false
                 foregound_view.layoutParams.height = 0
             }
         }

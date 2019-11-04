@@ -13,8 +13,8 @@ import kotlinx.coroutines.*
 
 class ColorProgress : AppCompatActivity() {
 
-    private var progressStopped: Boolean = false
     private var onAnimation: Boolean = false
+    private var onStopProgress: Boolean = false
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)//Remove title bar
         this.requestWindowFeature(Window.FEATURE_NO_TITLE)
@@ -24,10 +24,8 @@ class ColorProgress : AppCompatActivity() {
 
         val deviceWidth = CorocUtil.getDevicePoint(windowManager).first
         val deviceHeight = CorocUtil.getDevicePoint(windowManager).second
-//        var rWidth: Float = width.toFloat()
         var rHeight: Float = deviceHeight.toFloat()
         var counter = 600f //per 100 milliseconds -> second * 1000 / 100
-//        val rwUnit = width / counter
         var rhUnit = deviceHeight / counter
         background_view.layoutParams.width = deviceWidth
         background_view.layoutParams.height = deviceHeight
@@ -46,33 +44,34 @@ class ColorProgress : AppCompatActivity() {
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
         })
 
-        textView3.text = progressStopped.toString()
+        textView3.text = onAnimation.toString()
         foregound_view.setOnClickListener{
-            if(onAnimation) {
+            if(onAnimation && !onStopProgress) {
+                onAnimation = false
+                onStopProgress = true
+                return@setOnClickListener
+            } else if (onStopProgress) {
                 return@setOnClickListener
             }
             onAnimation = true
-            progressStopped = false
             CoroutineScope(Dispatchers.Main).launch {
                 Toast.makeText(applicationContext, "Clicked", Toast.LENGTH_SHORT).show()
-                while ( rHeight > 0) {
+                while ( rHeight > 0 && onAnimation) {
                     delay(100)
-                    if (progressStopped) {
+                    if (!onAnimation) {
                         break
-                    }
-//                    rWidth -= rwUnit
+                    } // Or you can put delay to last part of this while delay if you want to remove redundant
+                      // if break phrases however that would make time progression little bit awkward
                     rHeight -= rhUnit
                     textView2.text = rHeight.toString()
 //                    imageView2.layoutParams.width = rWidth.toInt()
                     foregound_view.layoutParams.height = rHeight.toInt()
                 }
-                progressStopped = true
                 onAnimation = false
-                textView3.text = progressStopped.toString()
+                onStopProgress = false
+                textView3.text = onAnimation.toString()
                 foregound_view.layoutParams.height = 0
-                Toast.makeText(applicationContext, "After while on scope", Toast.LENGTH_SHORT).show()
             }
-            Toast.makeText(applicationContext, "After scope while listener", Toast.LENGTH_SHORT).show()
         }
     }
 }

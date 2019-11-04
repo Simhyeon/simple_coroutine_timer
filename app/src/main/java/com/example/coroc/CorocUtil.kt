@@ -2,6 +2,7 @@ package com.example.coroc
 
 import android.graphics.Point
 import android.view.WindowManager
+import kotlinx.coroutines.delay
 
 class CorocUtil {
     companion object {
@@ -12,6 +13,12 @@ class CorocUtil {
             val width = size.x
             val height = size.y
             return Pair(width, height)
+        }
+        /*
+        * 딜레이밀리세컨드 마다 어느정도의 level을 감소시켜야 하는가를 리턴함.
+        * */
+        fun getLevelVariation(totalSeconds: Int, delayMilliSeconds: Int): Int {
+            return 10000 / totalSeconds / 1000 * delayMilliSeconds
         }
     }
 
