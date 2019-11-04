@@ -2,11 +2,11 @@ package com.example.coroc
 
 import android.graphics.ColorMatrixColorFilter
 import android.os.Bundle
+import android.util.Log
 import android.view.Window
 import android.view.WindowManager
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import kotlinx.android.synthetic.main.image_progress.*
 import kotlinx.android.synthetic.main.wave_progress.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -28,27 +28,21 @@ class WaveProgress : AppCompatActivity() {
         // Currently just pure white
         val bgFilter = ColorMatrixColorFilter(
             floatArrayOf(
-                1f,     0f,     0f,     0f, 0f,
-                0f,     1f,     0f,     0f, 0f,
-                0f,     0f,     1f,     0f, 0f,
-                0f,     0f,     0f,     1f, 0f
+                0f,     0f,     0f,     0f, 0f,
+                0f,     0f,     0f,     0f, 0f,
+                0f,     0f,     0f,     0f, 0f,
+                0f,     0f,     0f,     0f, 0f
             ))
 
         val waveDrawable = CorocWaveDrawable(this, R.drawable.blur, bgFilter)
         wave_foreground.setImageDrawable(waveDrawable)
-        waveDrawable.setOptions(43, 4,24)
+        waveDrawable.setOptions(19, 10000,21)
         waveDrawable.level = 0 // Litterly nothing to show
 
-        val deviceWidth = CorocUtil.getDevicePoint(windowManager).first
-        val deviceHeight = CorocUtil.getDevicePoint(windowManager).second
-        var rHeight: Float = deviceHeight.toFloat()
-        var counter = 600f //per 100 milliseconds -> second * 1000 / 100
-        var rhUnit = deviceHeight / counter
-
-        wave_background.layoutParams.width = deviceWidth
-        wave_background.layoutParams.height = deviceHeight
-        wave_foreground.layoutParams.width = deviceWidth
-        wave_foreground.layoutParams.height = deviceHeight
+        var heightLevel = 0f // Initial value is 0
+        var delayMilliSeconds = 33 // Delay for while loop
+        var totalSeconds = 60 // Initial value is 60
+        var levelVariation = CorocUtil.getLevelVariation(totalSeconds, delayMilliSeconds)
 
         wave_foreground.setOnClickListener {
             if(onAnimation && !onStopProgress) {
@@ -61,16 +55,22 @@ class WaveProgress : AppCompatActivity() {
             onAnimation = true
             CoroutineScope(Dispatchers.Main).launch {
                 Toast.makeText(applicationContext, "Clicked", Toast.LENGTH_SHORT).show()
-                while ( rHeight > 0 && onAnimation) {
-                    delay(100)
+                while ( (heightLevel in 0f..10000f) && onAnimation) {
+                    Log.d("WaveProgress", "heightLevel : $heightLevel ${waveDrawable.level}")
+                    delay(delayMilliSeconds.toLong())
                     if (!onAnimation) {
                         break
-                    }
-                    foregound_view.layoutParams.height = rHeight.toInt()
+                    } // Or you can put delay to last part of this while delay if you want to remove redundant
+                    // if break phrases however that would make time progression little bit awkward
+                    heightLevel += levelVariation
+//                    imageView2.layoutParams.width = rWidth.toInt()
+                    waveDrawable.level = heightLevel.toInt()
                 }
                 onAnimation = false
                 onStopProgress = false
-                foregound_view.layoutParams.height = 0
+                if (heightLevel >= 10000) {
+                    waveDrawable.level = 10000
+                }
             }
         }
 //        seekBar.setOnSeekBarChangeListener( object : SeekBar.OnSeekBarChangeListener {
