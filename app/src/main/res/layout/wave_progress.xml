@@ -5,69 +5,14 @@
 
     <ImageView
         android:id="@+id/wave_foreground"
-        android:layout_width="100dp"
-        android:layout_height="200dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_centerInParent="true"
         android:layout_marginStart="0dp"
-        android:layout_marginTop="255dp"
-        android:layout_marginEnd="151dp"
+        android:layout_marginTop="0dp"
+        android:layout_marginEnd="0dp"
         app:srcCompat="@color/colorPrimary" />
 
-    <SeekBar
-        android:id="@+id/seekBar"
-        android:layout_width="100dp"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="67dp"
-        android:layout_marginEnd="86dp"
-        android:layout_marginBottom="173dp" />
-
-    <SeekBar
-        android:id="@+id/seekBar2"
-        android:layout_width="100dp"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginStart="67dp"
-        android:layout_marginEnd="86dp"
-        android:layout_marginBottom="130dp" />
-
-    <SeekBar
-        android:id="@+id/seekBar3"
-        android:layout_width="100dp"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="67dp"
-        android:layout_marginEnd="86dp"
-        android:layout_marginBottom="79dp" />
-
-    <SeekBar
-        android:id="@+id/seekBar4"
-        android:layout_width="100dp"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginStart="66dp"
-        android:layout_marginEnd="87dp"
-        android:layout_marginBottom="219dp" />
-
-    <ImageView
-        android:id="@+id/wave_background"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="39dp"
-        android:layout_marginTop="101dp"
-        app:srcCompat="@android:color/background_light" />
 </RelativeLayout>
