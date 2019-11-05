@@ -34,10 +34,15 @@ class WaveProgress : AppCompatActivity() {
                 0f,     0f,     0f,     0f, 0f
             ))
 
+        Log.d("DrawableSize", "image width before setImageDrawable ${wave_foreground.layoutParams.width}")
         val waveDrawable = CorocWaveDrawable(this, R.drawable.blur, bgFilter)
         wave_foreground.setImageDrawable(waveDrawable)
+        Log.d("DrawableSize", "image width after setImageDrawable ${wave_foreground.layoutParams.width}")
         waveDrawable.setOptions(50, 10000,21)
         waveDrawable.level = 0 // Litterly nothing to show
+        Log.d("DrawableSize", "image width after setOptions ${wave_foreground.layoutParams.width}")
+
+        wave_foreground.layoutParams.width = CorocUtil.getDevicePoint(windowManager).first
 
         var heightLevel = 0f // Initial value is 0
         var delayMilliSeconds = 33 // Delay for while loop
