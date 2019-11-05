@@ -36,7 +36,7 @@ class WaveProgress : AppCompatActivity() {
 
         val waveDrawable = CorocWaveDrawable(this, R.drawable.blur, bgFilter)
         wave_foreground.setImageDrawable(waveDrawable)
-        waveDrawable.setOptions(19, 10000,21)
+        waveDrawable.setOptions(50, 10000,21)
         waveDrawable.level = 0 // Litterly nothing to show
 
         var heightLevel = 0f // Initial value is 0
