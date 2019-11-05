@@ -41,7 +41,7 @@ class WaveProgress : AppCompatActivity() {
 
         var heightLevel = 0f // Initial value is 0
         var delayMilliSeconds = 33 // Delay for while loop
-        var totalSeconds = 60 // Initial value is 60
+        var totalSeconds = 40 // Initial value is 60
         var levelVariation = CorocUtil.getLevelVariation(totalSeconds, delayMilliSeconds)
 
         wave_foreground.setOnClickListener {

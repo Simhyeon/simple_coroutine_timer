@@ -41,7 +41,7 @@ class ColorProgress : AppCompatActivity() {
 
         var heightLevel = 10000f // Initial value is 10000
         var delayMilliSeconds = 33 // Delay for while loop
-        var totalSeconds = 60 // Initial value is 60
+        var totalSeconds = 40 // Initial value is 60
         var levelVariation = CorocUtil.getLevelVariation(totalSeconds, delayMilliSeconds)
         editText.addTextChangedListener(object: TextWatcher {
             override fun afterTextChanged(s: Editable?) {
