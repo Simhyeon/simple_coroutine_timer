@@ -6,9 +6,13 @@
 
 - 시간초에 따라서 이미지뷰를 크롭하는 타이머
 
+![](ColorProgress.gif)
+
 ## WaveProgress
 
 - 시간초에 따라서 이미지뷰를 움직이는 사인곡선 형태로 크롭하는 타이머
+
+![](WaveProgress.gif)
 
 # TodoList
 
