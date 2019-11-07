@@ -1,4 +1,4 @@
-## Simple Coroutine Timer
+# Simple Coroutine Timer
 
 ## Installation
 
