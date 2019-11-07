@@ -1,5 +1,9 @@
 ## Simple Coroutine Timer
 
+## Installation
+
+- Maven Repository : 추가될 예정
+
 ### Color Progress
 
 - 단순하게 화면을 채우는 타이머, 아마 쓰지는 않을 예정
