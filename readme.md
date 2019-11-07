@@ -2,7 +2,14 @@
 
 ### Color Progress
 
+- 단순하게 화면을 채우는 타이머, 아마 쓰지는 않을 예정
+
 ### Wave Progress
 
-#### To DO
-- Wave Progress 비트맵 이미지 사용이 힘듬, 색상만으로 구현할 것
+- 데모
+
+![](WaveProgress.gif)
+
+- 물결 모양으로 화면을 채우는 타이머
+
+- 사용례 -> 11-08일에 추가 예정
