@@ -19,7 +19,7 @@ class WaveProgress : AppCompatActivity() {
         setContentView(R.layout.wave_progress)
 
         val waveTimerView = WaveTimerView(this, waveRoot, 33, 60)
-        waveTimerView.setWaveDrawable(R.drawable.gradient_morpheus_den, Color.argb(100,255,255,255), PorterDuff.Mode.SCREEN)
+        waveTimerView.setWaveDrawable(R.drawable.gradient_red_salvation, Color.argb(100,255,255,255), PorterDuff.Mode.SCREEN)
         //waveTimerView.setWaveDrawable(R.drawable.gradient_morpheus_den, Color.argb(0,255,255,255), PorterDuff.Mode.SRC)
         waveTimerView.requestLayout()
 
