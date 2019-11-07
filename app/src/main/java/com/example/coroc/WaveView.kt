@@ -1,25 +1,32 @@
 package com.example.coroc
 
 import android.content.Context
-import android.graphics.ColorMatrixColorFilter
+import android.graphics.PorterDuff
 import android.util.Log
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.Toast
 import kotlinx.coroutines.*
 
-class WaveTimerView(context: Context, rootViewGroup: ViewGroup, delayMilliSeconds: Int, durationS: Int) : ImageView(context) {
+class WaveTimerView(context: Context, rootViewGroup: ViewGroup, var delayMilliSeconds: Int, var durationS: Int) : ImageView(context) {
 
-    var waveDrawable: CorocWaveDrawable? = null
-    var heightLevel= 0f
-    var delayMilliSeconds = 0
-    var levelVariation = 0f
+    private var waveDrawable: CorocWaveDrawable? = null
+    private var heightLevel= 0f
+    private var levelVariation = 0f
     private var onAnimation = false
     private var onStopProgress = false
     private var jobId: Job? = null
 
     init {
-        this.layoutParams = ViewGroup.LayoutParams(-1, -1)
+        this.layoutParams = ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT)
+        if (delayMilliSeconds < 1) {
+            Toast.makeText(context, "DelayMilliSeconds should be natural numbers", Toast.LENGTH_SHORT).show()
+            delayMilliSeconds = 33
+        }
+        if (durationS < 1) {
+            Toast.makeText(context, "Duration should be natural numbers", Toast.LENGTH_SHORT).show()
+            durationS = 60
+        }
         this.bringToFront()
         this.levelVariation = CorocUtil.getLevelVariation(durationS, this.delayMilliSeconds)
         rootViewGroup.addView(this)
@@ -28,14 +35,14 @@ class WaveTimerView(context: Context, rootViewGroup: ViewGroup, delayMilliSecond
     fun setWaveDrawable(colorRes: Int) : CorocWaveDrawable? {
         waveDrawable = CorocWaveDrawable(context, colorRes)
         super.setImageDrawable(waveDrawable)
-        waveDrawable!!.level = 10000
+        waveDrawable!!.level = 0
         return waveDrawable
     }
 
-    fun setWaveDrawable(colorRes: Int, bgColorFilter: ColorMatrixColorFilter) : CorocWaveDrawable? {
-        waveDrawable = CorocWaveDrawable(context, colorRes, bgColorFilter)
+    fun setWaveDrawable(colorRes: Int, bgColorFilter: Int, filterMode: PorterDuff.Mode = PorterDuff.Mode.SRC) : CorocWaveDrawable? {
+        waveDrawable = CorocWaveDrawable(context, colorRes, bgColorFilter, filterMode)
         super.setImageDrawable(waveDrawable)
-        waveDrawable!!.level = 10000
+        waveDrawable!!.level = 0
         return waveDrawable
     }
 
@@ -49,16 +56,13 @@ class WaveTimerView(context: Context, rootViewGroup: ViewGroup, delayMilliSecond
         }
         onAnimation = true
         jobId =CoroutineScope(Dispatchers.Main).launch {
-            Toast.makeText(context, "Clicked", Toast.LENGTH_SHORT).show()
             while ((heightLevel in 0f..10000f) && onAnimation) {
-//                Log.d("WaveProgress", "heightLevel : $heightLevel ${waveDrawable.level}")
+                Log.d("WaveProgress", "heightLevel : $heightLevel ${waveDrawable?.level}")
                 delay(delayMilliSeconds.toLong())
                 if (!onAnimation) {
                     break
-                } // Or you can put delay to last part of this while delay if you want to remove redundant
-                // if break phrases however that would make time progression little bit awkward
+                }
                 heightLevel += levelVariation
-//                    imageView2.layoutParams.width = rWidth.toInt()
                 waveDrawable!!.level = heightLevel.toInt()
             }
             onAnimation = false
