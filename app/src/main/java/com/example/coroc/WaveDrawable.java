@@ -20,9 +20,12 @@ import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.util.Log;
 import android.view.Choreographer;
+import android.view.WindowManager;
 import android.view.animation.DecelerateInterpolator;
 
 import static android.content.ContentValues.TAG;
+
+import com.example.coroc.CorocUtil;
 
 /**
  * Created by jing on 16-12-6.
@@ -30,8 +33,8 @@ import static android.content.ContentValues.TAG;
 
 public class WaveDrawable extends Drawable implements Animatable, ValueAnimator.AnimatorUpdateListener {
 
-    private static final float WAVE_HEIGHT_FACTOR = 0.2f;
-    private static final float WAVE_SPEED_FACTOR = 0.02f;
+    private static final float WAVE_HEIGHT_FACTOR = 0.025f; //original is 0.2f
+    private static final float WAVE_SPEED_FACTOR = 0.01f; //original is 0.02f
     private static final int UNDEFINED_VALUE = Integer.MIN_VALUE;
     private Drawable mDrawable;
     private int mWidth, mHeight;
@@ -84,7 +87,6 @@ public class WaveDrawable extends Drawable implements Animatable, ValueAnimator.
 
         init(drawable);
     }
-
     private void init(Drawable drawable) {
         mDrawable = drawable;
         mMatrix.reset();

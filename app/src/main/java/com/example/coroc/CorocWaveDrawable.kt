@@ -6,11 +6,18 @@ import android.graphics.ColorFilter
 import android.graphics.ColorMatrix
 import android.graphics.drawable.Drawable
 import android.os.Build
+import android.view.ViewGroup
+import android.view.WindowManager
+import android.widget.ImageView
+import android.widget.RelativeLayout
+import androidx.core.view.MarginLayoutParamsCompat
 
 class CorocWaveDrawable: WaveDrawable {
-    constructor(context: Context, imgRes: Int) : super(context, imgRes) {}
-    constructor(drawable: Drawable) : super(drawable) {}
-    constructor(context: Context, imgRes: Int, colorFilter: ColorFilter) : super(context, imgRes) {
+    constructor(context: Context, drawable: Drawable?) : super(drawable) {
+    }
+    constructor(context: Context, imgRes: Int) : super(context, imgRes) {
+    }
+    constructor(context: Context, imgRes: Int, colorFilter: ColorFilter): super(context, imgRes) {
         bgFilter = colorFilter
     }
 

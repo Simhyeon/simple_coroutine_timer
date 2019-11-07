@@ -3,7 +3,6 @@ package com.example.coroc
 import android.graphics.Point
 import android.util.Log
 import android.view.WindowManager
-import kotlinx.coroutines.delay
 
 class CorocUtil {
     companion object {
