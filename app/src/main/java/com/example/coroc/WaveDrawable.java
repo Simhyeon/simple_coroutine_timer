@@ -20,12 +20,9 @@ import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.util.Log;
 import android.view.Choreographer;
-import android.view.WindowManager;
 import android.view.animation.DecelerateInterpolator;
 
 import static android.content.ContentValues.TAG;
-
-import com.example.coroc.CorocUtil;
 
 /**
  * Created by jing on 16-12-6.

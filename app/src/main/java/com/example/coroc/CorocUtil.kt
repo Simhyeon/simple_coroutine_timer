@@ -1,7 +1,6 @@
 package com.example.coroc
 
 import android.graphics.Point
-import android.util.Log
 import android.view.WindowManager
 
 class CorocUtil {

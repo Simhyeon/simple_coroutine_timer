@@ -2,7 +2,6 @@ package com.example.coroc
 
 import android.content.Context
 import android.graphics.PorterDuff
-import android.util.Log
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.Toast
