@@ -34,9 +34,11 @@
    
    - Method specification
    
-   WaveView.kt
+   WaveTimerView.kt
    
    ```kotlin
+   class WaveTimerView(context: Context, rootViewGroup: ViewGroup, var delayMilliSeconds: Int, var durationS: Int) : ImageView(context
+   
    fun setWaveDrawable(colorRes: Int) : CorocWaveDrawable?
    fun setWaveDrawable(colorRes: Int, bgColorFilter: Int, filterMode: PorterDuff.Mode = PorterDuff.Mode.SRC) : CorocWaveDrawable?
    fun toggleTimer()
