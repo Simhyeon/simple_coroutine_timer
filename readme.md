@@ -6,6 +6,8 @@
 
 - 기타: WaveView.kt, CorocUtil.kt,CorocWaveDrawable.kt, WaveDrawable.java파일만 빼가서 포함시키면 됨.
 
+- **(필수) 코틀린 버전 1.3이상 필요함**
+
 ## Color Progress
 
 - 단순하게 화면을 채우는 타이머, 아마 쓰지는 않을 예정
