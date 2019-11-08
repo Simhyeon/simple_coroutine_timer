@@ -1,6 +1,6 @@
 # Simple Coroutine Timer
 
-## Installation
+## 설치
 
 - 클론으로 다운받아서 직접 코드를 사용 (비추천)
 
