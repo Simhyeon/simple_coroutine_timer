@@ -33,7 +33,7 @@ class ColorProgress : AppCompatActivity() {
         val clipDrawable = foreground_view.drawable
         clipDrawable.level = 10000
 
-        var heightLevel = 10000f // Initial value is 10000
+        var heightLevel = 10000.0 // Initial value is 10000
         var delayMilliSeconds = 33 // Delay for while loop
         var totalSeconds = 15 // Initial value is 15
         var levelVariation = CorocUtil.getLevelVariation(totalSeconds, delayMilliSeconds)
