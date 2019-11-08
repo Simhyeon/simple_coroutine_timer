@@ -125,7 +125,7 @@ git clone https://github.com/Simhyeon/simple_coroutine_timer
 
    ```kotlin
    WaveTimerView(context: Context, rootViewGroup: ViewGroup, var delayMilliSeconds: Int, var durationS: Int) : ImageView(context)
-   // WaveTimerView의 생성자
+   // WaveTimerView의 생성자 - 컨텍스트, 뷰를 추가할 부모 뷰그룹, 이미지의 레벨(높이) 상승 간격, 타이머 총시간(초) 
    fun setWaveDrawable(colorRes: Int) : CorocWaveDrawable?
    // WaveTimerView에 drawable 오브젝트를 할당하는 메서드 기본적으로는 색을 전달한다. gradient Color도 가능
    fun setWaveDrawable(colorRes: Int, bgColorFilter: Int, filterMode: PorterDuff.Mode = PorterDuff.Mode.SRC) : CorocWaveDrawable?
