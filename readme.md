@@ -128,7 +128,7 @@ git clone https://github.com/Simhyeon/simple_coroutine_timer
    // WaveTimerView에 drawable 오브젝트를 할당하는 메서드 기본적으로는 색을 전달한다. gradient Color도 가능
    fun setWaveDrawable(colorRes: Int, bgColorFilter: Int, filterMode: PorterDuff.Mode = PorterDuff.Mode.SRC) : CorocWaveDrawable?
    // 배경의 컬러필터도 임의로 할당한다.
-   fun toggleTimer() // 타이머를 토글한다.
+   fun toggleTimer() /*타이머를 토글한다.*/
    fun endTimer() // 타이머를 종료한다.
    fun restartTimer() // 타이머를 재시작한다.
    ```
