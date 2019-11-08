@@ -81,13 +81,13 @@ git clone https://github.com/Simhyeon/simple_coroutine_timer
             Toast.makeText(this, "Toggled", Toast.LENGTH_SHORT).show()
             waveTimerView!!.toggleTimer()
         }
-        // 코틀린 코루틴을 통해서 구현했기 때문에 액티비티가 변경되도 메서드는 계속 호출되고 있으므로 인위적으로 endTimer()를 호출해줘야 함.
     }
 
     override fun onPause() {
         super.onPause()
         waveTimerView!!.endTimer()
     }
+    // 코틀린 코루틴을 통해서 구현했기 때문에 액티비티가 변경되도 메서드는 계속 호출되고 있으므로 인위적으로 endTimer()를 호출해줘야 함.
   ```
 
   - 자바
