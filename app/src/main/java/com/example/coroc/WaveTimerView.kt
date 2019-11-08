@@ -11,8 +11,8 @@ import kotlinx.coroutines.*
 class WaveTimerView(context: Context, rootViewGroup: ViewGroup, var delayMilliSeconds: Int, var durationS: Int) : ImageView(context) {
 
     private var waveDrawable: CorocWaveDrawable? = null
-    private var heightLevel= 0f
-    private var levelVariation = 0f
+    private var heightLevel= 0.0
+    private var levelVariation = 0.0
     private var onAnimation = false
     private var onStopProgress = false
     private var jobId: Job? = null
@@ -57,13 +57,9 @@ class WaveTimerView(context: Context, rootViewGroup: ViewGroup, var delayMilliSe
         onAnimation = true
         jobId =CoroutineScope(Dispatchers.Main).launch {
             while ((heightLevel in 0f..10000f) && onAnimation) {
-                Log.d("WaveProgress", "heightLevel : $heightLevel ${waveDrawable?.level}")
-                delay(delayMilliSeconds.toLong())
-                if (!onAnimation) {
-                    break
-                }
                 heightLevel += levelVariation
                 waveDrawable!!.level = heightLevel.toInt()
+                delay(delayMilliSeconds.toLong())
             }
             onAnimation = false
             onStopProgress = false
@@ -73,12 +69,16 @@ class WaveTimerView(context: Context, rootViewGroup: ViewGroup, var delayMilliSe
         }
     }
 
-    fun restartTimer() {
+    fun endTimer() {
         jobId!!.cancel()
         onAnimation = false
         onStopProgress = false
-        heightLevel = 0f
+        heightLevel = 0.0
         waveDrawable!!.level = 0
+    }
+
+    fun restartTimer() {
+        endTimer()
         toggleTimer()
     }
 }
