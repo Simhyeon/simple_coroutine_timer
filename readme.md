@@ -137,4 +137,4 @@ git clone https://github.com/Simhyeon/simple_coroutine_timer
 
 - 샘플 그라디언트 파일
 
-[Resources](https://github.com/Simhyeon/simple_coroutine_timer/tree/master/app/src/main/res/drawable)
+  [Resources](https://github.com/Simhyeon/simple_coroutine_timer/tree/master/app/src/main/res/drawable)
