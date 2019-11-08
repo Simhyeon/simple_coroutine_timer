@@ -9,7 +9,9 @@ import kotlinx.coroutines.*
 
 class WaveTimerView(context: Context, rootViewGroup: ViewGroup, var delayMilliSeconds: Int, var durationS: Int) : ImageView(context) {
 
-    private var waveDrawable: CorocWaveDrawable? = null
+    var waveDrawable: CorocWaveDrawable? = null
+        private set
+    
     private var heightLevel= 0.0
     private var levelVariation = 0.0
     private var onAnimation = false
