@@ -54,11 +54,11 @@ git clone https://github.com/Simhyeon/simple_coroutine_timer
 
 ## Wave Progress
 
+- 물결 모양으로 화면을 채우는 타이머
+
 - 데모
 
 ![WaveProgress_DEMO](WaveProgress.gif)
-
-- 물결 모양으로 화면을 채우는 타이머
 
 - 예시 (코틀린, 자바)
 
