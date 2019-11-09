@@ -97,6 +97,9 @@ git clone https://github.com/Simhyeon/simple_coroutine_timer
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        
+        // 원한다면 이 부분에 statusbar를 지우는 코드를 넣어도 됨. 그리고 넣는게 더 이뻐보임.
+        
         setContentView(R.layout.activity_main);
 
         ViewGroup rootView = findViewById(R.id.rootView);
