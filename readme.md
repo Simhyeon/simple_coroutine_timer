@@ -10,7 +10,7 @@ git clone https://github.com/Simhyeon/simple_coroutine_timer
 
 - [WaveTimerView.jar](https://github.com/Simhyeon/simple_coroutine_timer/blob/master/WaveTimerView.jar) 를 다운 받아서 사용 (ColorProgress.kt는 미 포함)
 
-- 라이브러리 사용 환경
+- **라이브러리 사용 환경**
 
   - 코틀린 버전 1.3.x으로 설정
 
