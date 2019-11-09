@@ -48,11 +48,11 @@ git clone https://github.com/Simhyeon/simple_coroutine_timer
 
   ```
 
-## Color Progress
+## Color Progress Timer
 
 - 단순하게 화면을 채우는 타이머, 아마 쓰지는 않을 예정
 
-## Wave Progress
+## Wave Timer View
 
 - 물결 모양으로 화면을 채우는 타이머
 
