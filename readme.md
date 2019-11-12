@@ -8,9 +8,9 @@
 git clone https://github.com/Simhyeon/simple_coroutine_timer
 ```
 
-- WaveTimerView.jar 를 다운 받아서 사용 (ColorProgress.kt는 미 포함)
+- [WaveTimerView.jar](https://github.com/Simhyeon/simple_coroutine_timer/blob/master/WaveTimerView.jar) 를 다운 받아서 사용 (ColorProgress.kt는 미 포함)
 
-- 라이브러리 사용 환경
+- **라이브러리 사용 환경**
 
   - 코틀린 버전 1.3.x으로 설정
 
@@ -21,12 +21,12 @@ git clone https://github.com/Simhyeon/simple_coroutine_timer
   ```gradle
   buildscript {
     ext.kotlin_version = '1.3.50'
-    ...
+    //...
 
     dependencies {
-        ...
+        //...
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
-        ...
+        //...
     }
   }
 
@@ -39,26 +39,26 @@ git clone https://github.com/Simhyeon/simple_coroutine_timer
   apply plugin: 'kotlin-android'
 
     dependencies {
-        ...
+        //...
         implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlinVersion"
         implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.2.1'
         implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.1.1'
-        ...
+        //...
     }
 
   ```
 
-## Color Progress
+## Color Progress Timer
 
 - 단순하게 화면을 채우는 타이머, 아마 쓰지는 않을 예정
 
-## Wave Progress
+## Wave Timer View
+
+- 물결 모양으로 화면을 채우는 타이머
 
 - 데모
 
 ![WaveProgress_DEMO](WaveProgress.gif)
-
-- 물결 모양으로 화면을 채우는 타이머
 
 - 예시 (코틀린, 자바)
 
@@ -97,6 +97,9 @@ git clone https://github.com/Simhyeon/simple_coroutine_timer
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        
+        // 원한다면 이 부분에 statusbar를 지우는 코드를 넣어도 됨. 그리고 넣는게 더 이뻐보임.
+        
         setContentView(R.layout.activity_main);
 
         ViewGroup rootView = findViewById(R.id.rootView);
