@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.content_main.*
+import kotlinx.android.synthetic.main.running_timer.*
 
 class MainActivity : AppCompatActivity(){
 
@@ -20,8 +21,8 @@ class MainActivity : AppCompatActivity(){
             val intent = Intent(this, WaveProgress::class.java)
             startActivity(intent)
         }
-        toSectorProgress.setOnClickListener {
-            val intent = Intent(this, SectorProgress::class.java)
+        toRunningProgress.setOnClickListener {
+            val intent = Intent(this, RunningTimer::class.java)
             startActivity(intent)
         }
     }
