@@ -20,6 +20,10 @@ class MainActivity : AppCompatActivity(){
             val intent = Intent(this, WaveProgress::class.java)
             startActivity(intent)
         }
+        toSectorProgress.setOnClickListener {
+            val intent = Intent(this, SectorProgress::class.java)
+            startActivity(intent)
+        }
     }
 }
 

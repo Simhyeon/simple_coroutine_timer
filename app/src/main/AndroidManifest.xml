@@ -30,6 +30,10 @@
             android:label="Coroc"
             android:theme="@style/AppTheme.NoActionBar">
         </activity>
+        <activity android:name=".SectorProgress"
+            android:label="Coroc"
+            android:theme="@style/AppTheme.NoActionBar">
+        </activity>
     </application>
 
 </manifest>
