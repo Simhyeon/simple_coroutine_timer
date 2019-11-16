@@ -32,6 +32,8 @@ class WaveProgress : AppCompatActivity() {
 
     override fun onPause() {
         super.onPause()
-        waveTimerView!!.endTimer()
+        if (waveTimerView != null) {
+            waveTimerView!!.endTimer()
+        }
     }
 }
