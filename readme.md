@@ -52,7 +52,7 @@ git clone https://github.com/Simhyeon/simple_coroutine_timer
 
 - 단순하게 화면을 채우는 타이머 clipDrawable로 
 
-## Running Horse Timer (자바 호환성 확인 아직 안 됨) + (어도비 라이센스로 벡터 파일 공유 x) 
+## Running Timer View (자바 호환성 확인 아직 안 됨) + (어도비 라이센스로 벡터 파일 공유 x) 
 
 - 달리는 말 벡터 애니메이션과 디지털 시계 폰트로 구성된 시간을 보여주는 타이머, 남은 시간의 비율에 따라 색이 변경됨
 
@@ -60,6 +60,36 @@ git clone https://github.com/Simhyeon/simple_coroutine_timer
 
 ![RunningProgress_DEMO](RunningProgress.gif) ![RunningProgressColor_DEMO](RunningProgress_Color.gif) 
 
+- 예시 (코틀린, ~~자바~~)
+
+  - 코틀린
+  
+  ```kotlin
+      private val givenTime: Int = 30
+    lateinit var runningTimerView: RunningTimerView
+    // 순차적으로 순환할 리소스(정수) 배열
+    private val imageArray : Array<Int> = arrayOf(
+        R.drawable.ic_running_horse_1.xml, R.drawable.ic_running_horse_2.xml, R.drawable.ic_running_horse_3.xml, 
+        R.drawable.ic_running_horse_4.xml, R.drawable.ic_running_horse_5.xml, R.drawable.ic_running_horse_6.xml, 
+        R.drawable.ic_running_horse_7.xml, R.drawable.ic_running_horse_8.xml, R.drawable.ic_running_horse_9.xml 
+    )
+    
+    override fun onCreate(savedInstance : Bundle?) {
+        //..
+        
+        timerText.text = CorocUtil.timeToMSFormat(givenTime)
+        runningTimerView = RunningTimerView(
+            this, runningView, imageNumber, imageArray, 150, givenTime, R.color.neonGreen, R.color.neonRed
+        )
+
+        changeImage.setOnClickListener {
+            Toast.makeText(this, "Toggled", Toast.LENGTH_SHORT).show()
+            runningTimerView.toggleTimer()
+        }
+    }
+  ```
+  
+  - ~~자바~~
 ## Wave Timer View
 
 - 물결 모양으로 화면을 채우는 타이머
