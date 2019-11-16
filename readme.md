@@ -8,7 +8,7 @@
 git clone https://github.com/Simhyeon/simple_coroutine_timer
 ```
 
-- [WaveTimerView.jar](https://github.com/Simhyeon/simple_coroutine_timer/blob/master/WaveTimerView.jar) 를 다운 받아서 사용 (WaveTimerView만 포함되어 있음.)
+- [WaveTimerView.jar](https://github.com/Simhyeon/simple_coroutine_timer/blob/master/WaveTimerView.jar) 를 다운 받아서 사용. 자바 코드와의 호환성 높음. (WaveTimerView만 포함되어 있음.)
 
 - **라이브러리 사용 환경**
 
