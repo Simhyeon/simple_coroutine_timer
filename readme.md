@@ -52,7 +52,7 @@ git clone https://github.com/Simhyeon/simple_coroutine_timer
 
 - 단순하게 화면을 채우는 타이머 clipDrawable로 
 
-## Running Horse Timer (자바 호환성 확인 아직 안 됨)
+## Running Horse Timer (자바 호환성 확인 아직 안 됨) + (어도비 라이센스로 벡터 파일 공유 x) 
 
 - 달리는 말 벡터 애니메이션과 디지털 시계 폰트로 구성된 시간을 보여주는 타이머, 남은 시간의 비율에 따라 색이 변경됨
 
