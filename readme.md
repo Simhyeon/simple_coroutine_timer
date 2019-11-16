@@ -58,7 +58,7 @@ git clone https://github.com/Simhyeon/simple_coroutine_timer
 
 - 데모
 
-![RunningProgress_DEMO](RunningProgress.gif)
+![RunningProgress_DEMO](RunningProgress.gif) ![RunningProgressColor_DEMO](RunningProgress_Color.gif) 
 
 ## Wave Timer View
 
