@@ -104,7 +104,7 @@ git clone https://github.com/Simhyeon/simple_coroutine_timer
   };
 
   @Override
-  public void onCreate(@Nullable Bundle savedInstanceState, @Nullable PersistableBundle persistentState) {
+  public void onCreate(Bundle savedInstanceState) {
       //...
 
       TextView imageNumber = findViewById(R.id.imageNumber);
