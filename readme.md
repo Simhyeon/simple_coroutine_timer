@@ -158,7 +158,9 @@ git clone https://github.com/Simhyeon/simple_coroutine_timer
 
   override fun onPause() {
       super.onPause()
-      waveTimerView!!.endTimer()
+      if (waveTimerView != null) {
+            waveTimerView!!.endTimer()
+      }
   }
   // 코틀린 코루틴을 통해서 구현했기 때문에 액티비티가 변경되도 메서드는 계속 호출되고 있으므로 인위적으로 endTimer()를 호출해줘야 함.
   ```
@@ -191,7 +193,9 @@ git clone https://github.com/Simhyeon/simple_coroutine_timer
   @Override
   protected void onPause() {
       super.onPause();
-      waveTimerView.endTimer();
+      if (waveTimerView != null) {
+            waveTimerView.endTimer();
+      }
   }
   // 코틀린 코루틴을 통해서 구현했기 때문에 액티비티가 변경되도 메서드는 계속 호출되고 있으므로 인위적으로 endTimer()를 호출해줘야 함.
   ```
@@ -202,7 +206,7 @@ git clone https://github.com/Simhyeon/simple_coroutine_timer
 
    ```kotlin
    WaveTimerView(context: Context, rootViewGroup: ViewGroup, var delayMilliSeconds: Int, var durationS: Int) : ImageView(context)
-   // WaveTimerView의 생성자 - 컨텍스트, 뷰를 추가할 부모 뷰그룹, 이미지의 레벨(높이) 상승 간격, 타이머 총시간(초) 
+   // WaveTimerView의 생성자 - 컨텍스트, drawable을 할당할 이미지뷰, 이미지의 레벨(높이) 상승 간격, 타이머 총시간(초) 
    fun setWaveDrawable(colorRes: Int) : CorocWaveDrawable?
    // WaveTimerView에 drawable 오브젝트를 할당하는 메서드 기본적으로는 색을 전달한다. gradient Color도 가능
    fun setWaveDrawable(colorRes: Int, bgColorFilter: Int, filterMode: PorterDuff.Mode = PorterDuff.Mode.SRC) : CorocWaveDrawable?
