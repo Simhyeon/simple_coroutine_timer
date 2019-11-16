@@ -8,9 +8,9 @@
 git clone https://github.com/Simhyeon/simple_coroutine_timer
 ```
 
-- [WaveTimerView.jar](https://github.com/Simhyeon/simple_coroutine_timer/blob/master/WaveTimerView.jar) 를 다운 받아서 사용. 자바 코드와의 호환성 높음. (WaveTimerView만 포함되어 있음.)
+- ~~[WaveTimerView.jar](https://github.com/Simhyeon/simple_coroutine_timer/blob/master/WaveTimerView.jar) 를 다운 받아서 사용.~~ (WaveTimerView만 포함되어 있음.)
 
-- **라이브러리 사용 환경**
+- **코드 사용 환경**
 
   - 코틀린 버전 1.3.x으로 설정
 
@@ -52,9 +52,11 @@ git clone https://github.com/Simhyeon/simple_coroutine_timer
 
 - 단순하게 화면을 채우는 타이머 clipDrawable로 
 
-## Running Timer View (자바 호환성 확인 아직 안 됨) + (어도비 라이센스로 벡터 파일 공유 x) 
+## Running Timer View (어도비 라이센스로 벡터 파일 공유 x) 
 
-- 달리는 말 벡터 애니메이션과 디지털 시계 폰트로 구성된 시간을 보여주는 타이머, 남은 시간의 비율에 따라 색이 변경됨
+- 움직이는 벡터 애니메이션과 디지털 시계 폰트로 구성된 시간을 보여주는 타이머, 남은 시간의 비율에 따라 색이 변경됨
+
+- [Font](https://www.dafont.com/alarm-clock.font)
 
 - 데모
 
@@ -72,7 +74,8 @@ git clone https://github.com/Simhyeon/simple_coroutine_timer
   private val imageArray : Array<Int> = arrayOf(
       R.drawable.ic_running_horse_1.xml, R.drawable.ic_running_horse_2.xml, R.drawable.ic_running_horse_3.xml, 
       R.drawable.ic_running_horse_4.xml, R.drawable.ic_running_horse_5.xml, R.drawable.ic_running_horse_6.xml, 
-      R.drawable.ic_running_horse_7.xml, R.drawable.ic_running_horse_8.xml, R.drawable.ic_running_horse_9.xml 
+      R.drawable.ic_running_horse_7.xml, R.drawable.ic_running_horse_8.xml, R.drawable.ic_running_horse_9.xml, 
+      R.drawable.ic_running_horse_10.xml, R.drawable.ic_running_horse_11.xml, R.drawable.ic_running_horse_12.xml
   )
 
   override fun onCreate(savedInstance : Bundle?) {
@@ -100,11 +103,12 @@ git clone https://github.com/Simhyeon/simple_coroutine_timer
   Integer[] imageArray = {
         R.drawable.ic_running_horse_1.xml, R.drawable.ic_running_horse_2.xml, R.drawable.ic_running_horse_3.xml, 
         R.drawable.ic_running_horse_4.xml, R.drawable.ic_running_horse_5.xml, R.drawable.ic_running_horse_6.xml, 
-        R.drawable.ic_running_horse_7.xml, R.drawable.ic_running_horse_8.xml, R.drawable.ic_running_horse_9.xml 
+        R.drawable.ic_running_horse_7.xml, R.drawable.ic_running_horse_8.xml, R.drawable.ic_running_horse_9.xml, 
+        R.drawable.ic_running_horse_10.xml, R.drawable.ic_running_horse_11.xml, R.drawable.ic_running_horse_12.xml
   };
 
   @Override
-  public void onCreate(@Nullable Bundle savedInstanceState, @Nullable PersistableBundle persistentState) {
+  public void onCreate(Bundle savedInstanceState) {
       //...
 
       TextView imageNumber = findViewById(R.id.imageNumber);
@@ -125,7 +129,7 @@ git clone https://github.com/Simhyeon/simple_coroutine_timer
   }
   ```
   
-## Wave Timer View
+## Wave Timer View (상속하지 않고 nested 구조로 바꾸는 걸 고려중)
 
 - 물결 모양으로 화면을 채우는 타이머
 
