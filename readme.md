@@ -125,6 +125,16 @@ git clone https://github.com/Simhyeon/simple_coroutine_timer
   }
   ```
   
+  -메서드 스펙
+  
+  ```kotlin
+  RunningTimerView(val context: Context,val runningView: ImageView,val timerView: TextView, val imageArray : Array<Int>, var animationDelay: Int, val durationS: Int ,val startColorRes : Int, val endColorRes: Int) // 생성자
+  // 순서대로: 컨텍스트, 벡터 이미지 뷰, 타이머텍스트 뷰, 이미지 배열, 애니메이션딜레이, 타이머 총시간(초), 시작 색상, 종료 색상
+  fun toggleTimer()
+  fun endTimer()
+  fun restartTimer()
+  ```
+  
 ## Wave Timer View
 
 - 물결 모양으로 화면을 채우는 타이머
