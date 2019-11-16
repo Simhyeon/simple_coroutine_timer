@@ -8,7 +8,7 @@
 git clone https://github.com/Simhyeon/simple_coroutine_timer
 ```
 
-- [WaveTimerView.jar](https://github.com/Simhyeon/simple_coroutine_timer/blob/master/WaveTimerView.jar) 를 다운 받아서 사용 (ColorProgress.kt는 미 포함)
+- [WaveTimerView.jar](https://github.com/Simhyeon/simple_coroutine_timer/blob/master/WaveTimerView.jar) 를 다운 받아서 사용 (WaveTimerView만 포함되어 있음.)
 
 - **라이브러리 사용 환경**
 
@@ -50,11 +50,15 @@ git clone https://github.com/Simhyeon/simple_coroutine_timer
 
 ## Color Progress Timer
 
-- 단순하게 화면을 채우는 타이머, 아마 쓰지는 않을 예정
+- 단순하게 화면을 채우는 타이머 clipDrawable로 
 
-## Running Horse Timer (만드는 중)
+## Running Horse Timer
 
-- 달리는 말 벡터 애니메이션과 디지털 시계 폰트로 구성된 시간을 보여주는 타이머, 남은 시간의 비율에 따라 tint 변경할 예정
+- 달리는 말 벡터 애니메이션과 디지털 시계 폰트로 구성된 시간을 보여주는 타이머, 남은 시간의 비율에 따라 색이 변경됨
+
+- 데모
+
+![RunningProgress_DEMO](RunningProgress.gif) ![RunningProgressColor_DEMO](RunningProgress_Color.gif) 
 
 ## Wave Timer View
 
