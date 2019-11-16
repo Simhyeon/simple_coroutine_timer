@@ -50,7 +50,7 @@ git clone https://github.com/Simhyeon/simple_coroutine_timer
 
 ## Color Progress Timer
 
-- 단순하게 화면을 채우는 타이머, 아마 쓰지는 않을 예정
+- 단순하게 화면을 채우는 타이머 clipDrawable로 
 
 ## Running Horse Timer
 
