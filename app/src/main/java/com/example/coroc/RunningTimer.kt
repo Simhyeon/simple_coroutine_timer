@@ -25,10 +25,7 @@ class RunningTimer : AppCompatActivity() {
 
     // 순차적으로 순환할 리소스(정수) 배열
     private val imageArray : Array<Int> = arrayOf(
-        R.drawable.ic_running_horse_1,R.drawable.ic_running_horse_2,R.drawable.ic_running_horse_3,
-        R.drawable.ic_running_horse_4,R.drawable.ic_running_horse_5,R.drawable.ic_running_horse_6,
-        R.drawable.ic_running_horse_7,R.drawable.ic_running_horse_8,R.drawable.ic_running_horse_9,
-        R.drawable.ic_running_horse_10,R.drawable.ic_running_horse_11,R.drawable.ic_running_horse_12
+        R.drawable.ic_licensefreehorse
     )
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
