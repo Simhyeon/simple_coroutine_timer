@@ -8,59 +8,74 @@ import android.widget.TextView
 import androidx.core.content.ContextCompat.getColor
 import kotlinx.coroutines.*
 
-class RunningTimerView(context: Context, rootViewGroup: ViewGroup, var animationDelay: Int, var durationS: Int) : ImageView(context) {
-    companion object {
-        fun startTimer(context: Context, runningView: ImageView, imageArray : Array<Int>, timerView: TextView, duration : Int, animationDelay: Int, startColorRes : Int, endColorRes: Int) : Pair<Job, Job> {
-            //imageNumber.text = counter.toString() + ":00"
-            when{
-                animationDelay < 0 -> {
-                    throw IllegalArgumentException("animationDelay should be positive integer")
-                }
-                duration < 0 -> {
-                    throw IllegalArgumentException("Duration should be positive integer")
-                }
-                imageArray.isEmpty() -> {
-                    throw IllegalArgumentException("imageArray's length should be positive")
-                }
-                else ->{
-                    val runningJob = CoroutineScope(Dispatchers.Main).launch {
-                        var counter = 0
-                        while (duration > 0) {
-                            runningView.setImageResource(imageArray[counter])
-                            //imageNumber.text = counter.toString() + ":00"
-                            counter += 1
-                            if (counter > imageArray.size - 1) {
-                                counter = 0
-                            }
-                            delay(animationDelay.toLong())
-                        }
-                    }
-                    val timerJob = CoroutineScope(Dispatchers.Main).launch {
-                        var timeLeft = duration
-                        var blendedColor: Int
-                        while(timeLeft > 0) {
-                            delay(1000) // Wait for 1 second
-                            timeLeft -=1
-                            timerView.text = CorocUtil.timeToMSFormat(timeLeft)
+class RunningTimerView(val context: Context,val runningView: ImageView,val timerView: TextView, val imageArray : Array<Int>, var animationDelay: Int, val durationS: Int ,val startColorRes : Int, val endColorRes: Int){
 
-                            blendedColor = CorocUtil.getBlendedColor(
-                                Color.valueOf(getColor(context, startColorRes)),
-                                Color.valueOf(getColor(context, endColorRes)),
-                                timeLeft.toFloat() / duration
-                            )
-
-                            runningView.setColorFilter(blendedColor)
-                            timerView.setTextColor(blendedColor)
-                        }
-                    }
-                    return Pair(runningJob, timerJob)
-                }
+    lateinit var runningJob: Job
+    lateinit var timerJob: Job
+    var isRunning = false
+    var duration = durationS
+    init {
+        when{
+            animationDelay < 0 -> {
+                throw IllegalArgumentException("animationDelay should be positive integer")
+            }
+            durationS < 0 -> {
+                throw IllegalArgumentException("Duration should be positive integer")
+            }
+            imageArray.isEmpty() -> {
+                throw IllegalArgumentException("imageArray's length should be positive")
             }
         }
+    }
 
-        fun endTimer(jobPair : Pair<Job, Job>) {
-            jobPair.first.cancel()
-            jobPair.second.cancel()
+    fun toggleTimer() {
+        if (isRunning) {
+            endTimer()
+            return
         }
+
+        isRunning = true
+        runningJob = CoroutineScope(Dispatchers.Main).launch {
+            var counter = 0
+            while (duration > 0) {
+                runningView.setImageResource(imageArray[counter])
+                //imageNumber.text = counter.toString() + ":00"
+                counter += 1
+                if (counter > imageArray.size - 1) {
+                    counter = 0
+                }
+                delay(animationDelay.toLong())
+            }
+        }
+        timerJob = CoroutineScope(Dispatchers.Main).launch {
+            var timeLeft = duration
+            var blendedColor: Int
+            while(timeLeft > 0) {
+                delay(1000) // Wait for 1 second
+                timeLeft -=1
+                timerView.text = CorocUtil.timeToMSFormat(timeLeft)
+
+                blendedColor = CorocUtil.getBlendedColor(
+                    Color.valueOf(getColor(context, startColorRes)),
+                    Color.valueOf(getColor(context, endColorRes)),
+                    timeLeft.toFloat() / duration
+                )
+
+                runningView.setColorFilter(blendedColor)
+                timerView.setTextColor(blendedColor)
+            }
+        }
+    }
+
+    fun endTimer() {
+        runningJob.cancel()
+        timerJob.cancel()
+    }
+
+    fun restartTimer() {
+        endTimer()
+        isRunning = false
+        duration = durationS
+        toggleTimer()
     }
 }

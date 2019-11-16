@@ -14,15 +14,8 @@ import kotlinx.coroutines.*
 
 class RunningTimer : AppCompatActivity() {
 
-    private var isRunning = false
-    lateinit var runningJob: Job
-    lateinit var timerJob: Job
-
-    var blendedColor : Int = 0
-    val givenTime: Int = 10
-    var timeLeft: Int = givenTime
-    lateinit var jobPair : Pair<Job, Job>
-
+    private val givenTime: Int = 30
+    lateinit var runningTimerView: RunningTimerView
     // 순차적으로 순환할 리소스(정수) 배열
     private val imageArray : Array<Int> = arrayOf(
         R.drawable.ic_licensefreehorse
@@ -34,19 +27,11 @@ class RunningTimer : AppCompatActivity() {
         setContentView(R.layout.running_timer)
 
         imageNumber.text = CorocUtil.timeToMSFormat(givenTime)
+        runningTimerView = RunningTimerView(this, runningView, imageNumber, imageArray, 150, givenTime, R.color.neonGreen, R.color.neonRed)
 
         changeImage.setOnClickListener {
-            if(isRunning){
-                RunningTimerView.endTimer(jobPair)
-                Toast.makeText(this, "Cancelled", Toast.LENGTH_SHORT).show()
-                isRunning = false
-                return@setOnClickListener
-            } else {
-                Toast.makeText(this, "Clicked", Toast.LENGTH_SHORT).show()
-            }
-
-            isRunning = true
-            jobPair = RunningTimerView.startTimer(this, runningView, imageArray, imageNumber, 30, 150, R.color.neonGreen, R.color.neonRed)
+            Toast.makeText(this, "Toggled", Toast.LENGTH_SHORT).show()
+            runningTimerView.toggleTimer()
         }
     }
 }
