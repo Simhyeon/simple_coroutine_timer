@@ -129,7 +129,7 @@ git clone https://github.com/Simhyeon/simple_coroutine_timer
   }
   ```
   
-## Wave Timer View
+## Wave Timer View (상속하지 않고 nested 구조로 바꾸는 걸 고려중)
 
 - 물결 모양으로 화면을 채우는 타이머
 
