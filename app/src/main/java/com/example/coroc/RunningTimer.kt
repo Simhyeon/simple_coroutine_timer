@@ -19,7 +19,7 @@ class RunningTimer : AppCompatActivity() {
     lateinit var timerJob: Job
 
     var blendedColor : Int = 0
-    val givenTime: Int = 355
+    val givenTime: Int = 10
     var timeLeft: Int = givenTime
 
     private val imageArray : Array<Int> = arrayOf(
