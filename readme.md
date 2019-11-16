@@ -74,7 +74,8 @@ git clone https://github.com/Simhyeon/simple_coroutine_timer
   private val imageArray : Array<Int> = arrayOf(
       R.drawable.ic_running_horse_1.xml, R.drawable.ic_running_horse_2.xml, R.drawable.ic_running_horse_3.xml, 
       R.drawable.ic_running_horse_4.xml, R.drawable.ic_running_horse_5.xml, R.drawable.ic_running_horse_6.xml, 
-      R.drawable.ic_running_horse_7.xml, R.drawable.ic_running_horse_8.xml, R.drawable.ic_running_horse_9.xml 
+      R.drawable.ic_running_horse_7.xml, R.drawable.ic_running_horse_8.xml, R.drawable.ic_running_horse_9.xml, 
+      R.drawable.ic_running_horse_10.xml, R.drawable.ic_running_horse_11.xml, R.drawable.ic_running_horse_12.xml
   )
 
   override fun onCreate(savedInstance : Bundle?) {
@@ -102,7 +103,8 @@ git clone https://github.com/Simhyeon/simple_coroutine_timer
   Integer[] imageArray = {
         R.drawable.ic_running_horse_1.xml, R.drawable.ic_running_horse_2.xml, R.drawable.ic_running_horse_3.xml, 
         R.drawable.ic_running_horse_4.xml, R.drawable.ic_running_horse_5.xml, R.drawable.ic_running_horse_6.xml, 
-        R.drawable.ic_running_horse_7.xml, R.drawable.ic_running_horse_8.xml, R.drawable.ic_running_horse_9.xml 
+        R.drawable.ic_running_horse_7.xml, R.drawable.ic_running_horse_8.xml, R.drawable.ic_running_horse_9.xml, 
+        R.drawable.ic_running_horse_10.xml, R.drawable.ic_running_horse_11.xml, R.drawable.ic_running_horse_12.xml
   };
 
   @Override
