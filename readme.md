@@ -8,8 +8,6 @@
 git clone https://github.com/Simhyeon/simple_coroutine_timer
 ```
 
-- ~~[WaveTimerView.jar](https://github.com/Simhyeon/simple_coroutine_timer/blob/master/WaveTimerView.jar) 를 다운 받아서 사용.~~ (WaveTimerView만 포함되어 있음.)
-
 - **코드 사용 환경**
 
   - 코틀린 버전 1.3.x으로 설정
@@ -150,10 +148,9 @@ git clone https://github.com/Simhyeon/simple_coroutine_timer
       this.window.setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN)
       setContentView(R.layout.wave_progress)
 
-      waveTimerView = WaveTimerView(this, waveRoot, 33, 120)
+      waveTimerView = WaveTimerView(this, waveView, 33, 120)
       waveTimerView!!.setWaveDrawable(R.drawable.gradient_red_salvation, Color.argb(100,255,255,255), PorterDuff.Mode.SCREEN)
       //waveTimerView.setWaveDrawable(R.drawable.gradient_morpheus_den, Color.argb(0,255,255,255), PorterDuff.Mode.SRC)
-      waveTimerView!!.requestLayout()
 
       waveTimerView!!.setOnClickListener {
           Toast.makeText(this, "Toggled", Toast.LENGTH_SHORT).show()
@@ -181,8 +178,8 @@ git clone https://github.com/Simhyeon/simple_coroutine_timer
 
       setContentView(R.layout.activity_main);
 
-      ViewGroup rootView = findViewById(R.id.rootView);
-      waveTimerView = new WaveTimerView(this, rootView, 33, 60);
+      ImageView waveView = findViewById(R.id.waveView);
+      waveTimerView = new WaveTimerView(this, waveView, 33, 60);
       waveTimerView.setWaveDrawable(R.color.colorAccent, Color.argb(100, 255, 255, 255), PorterDuff.Mode.SCREEN);
 
       rootView.setOnClickListener(new View.OnClickListener() {
