@@ -7,7 +7,7 @@ import android.widget.ImageView
 import android.widget.Toast
 import kotlinx.coroutines.*
 
-class WaveTimerView(context: Context, rootViewGroup: ViewGroup, var delayMilliSeconds: Int, var durationS: Int) : ImageView(context) {
+class WaveTimerView(val context: Context,val imageView: ImageView, var delayMilliSeconds: Int, var durationS: Int) {
 
     var waveDrawable: CorocWaveDrawable? = null
         private set
@@ -19,7 +19,6 @@ class WaveTimerView(context: Context, rootViewGroup: ViewGroup, var delayMilliSe
     private var jobId: Job? = null
 
     init {
-        this.layoutParams = ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT)
         if (delayMilliSeconds < 1) {
             Toast.makeText(context, "DelayMilliSeconds should be natural numbers", Toast.LENGTH_SHORT).show()
             delayMilliSeconds = 33
@@ -28,21 +27,19 @@ class WaveTimerView(context: Context, rootViewGroup: ViewGroup, var delayMilliSe
             Toast.makeText(context, "Duration should be natural numbers", Toast.LENGTH_SHORT).show()
             durationS = 60
         }
-        this.bringToFront()
         this.levelVariation = CorocUtil.getLevelVariation(durationS, this.delayMilliSeconds)
-        rootViewGroup.addView(this)
     }
 
     fun setWaveDrawable(colorRes: Int) : CorocWaveDrawable? {
         waveDrawable = CorocWaveDrawable(context, colorRes)
-        super.setImageDrawable(waveDrawable)
+        imageView.setImageDrawable(waveDrawable)
         waveDrawable!!.level = 0
         return waveDrawable
     }
 
     fun setWaveDrawable(colorRes: Int, bgColorFilter: Int, filterMode: PorterDuff.Mode = PorterDuff.Mode.SRC) : CorocWaveDrawable? {
         waveDrawable = CorocWaveDrawable(context, colorRes, bgColorFilter, filterMode)
-        super.setImageDrawable(waveDrawable)
+        imageView.setImageDrawable(waveDrawable)
         waveDrawable!!.level = 0
         return waveDrawable
     }
