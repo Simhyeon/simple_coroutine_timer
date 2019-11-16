@@ -67,7 +67,7 @@ git clone https://github.com/Simhyeon/simple_coroutine_timer
   private val givenTime: Int = 30
   lateinit var runningTimerView: RunningTimerView
   // 순차적으로 순환할 리소스(정수) 배열
-  private val imageArray : Array<Int> = arrayOf(
+  private val imageArray : Array<Int> = arrayOf( // 벡터 파일은 제공되지 않음.
       R.drawable.ic_running_horse_1.xml, R.drawable.ic_running_horse_2.xml, R.drawable.ic_running_horse_3.xml, 
       R.drawable.ic_running_horse_4.xml, R.drawable.ic_running_horse_5.xml, R.drawable.ic_running_horse_6.xml, 
       R.drawable.ic_running_horse_7.xml, R.drawable.ic_running_horse_8.xml, R.drawable.ic_running_horse_9.xml, 
@@ -96,7 +96,7 @@ git clone https://github.com/Simhyeon/simple_coroutine_timer
   Integer givenTime = 30;
   RunningTimerView runningTimerView;
   // 순차적으로 순환할 리소스(정수) 배열
-  Integer[] imageArray = {
+  Integer[] imageArray = { // 벡터 파일은 제공되지 않음.
         R.drawable.ic_running_horse_1.xml, R.drawable.ic_running_horse_2.xml, R.drawable.ic_running_horse_3.xml, 
         R.drawable.ic_running_horse_4.xml, R.drawable.ic_running_horse_5.xml, R.drawable.ic_running_horse_6.xml, 
         R.drawable.ic_running_horse_7.xml, R.drawable.ic_running_horse_8.xml, R.drawable.ic_running_horse_9.xml, 
