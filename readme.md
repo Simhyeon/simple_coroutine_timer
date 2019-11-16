@@ -60,7 +60,7 @@ git clone https://github.com/Simhyeon/simple_coroutine_timer
 
 ![RunningProgress_DEMO](RunningProgress.gif) ![RunningProgressColor_DEMO](RunningProgress_Color.gif) 
 
-- 예시 (코틀린, ~~자바~~)
+- 예시 (코틀린, 자바)
 
   - 코틀린
   
@@ -90,7 +90,7 @@ git clone https://github.com/Simhyeon/simple_coroutine_timer
   }
   ```
   
-  - ~~자바~~
+  - 자바
   
   ```Java
   //...
