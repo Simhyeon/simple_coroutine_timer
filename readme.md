@@ -36,7 +36,7 @@ git clone https://github.com/Simhyeon/simple_coroutine_timer
 
     dependencies {
         //...
-        implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlinVersion"
+        implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
         implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.2.1'
         implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.1.1'
         //...
